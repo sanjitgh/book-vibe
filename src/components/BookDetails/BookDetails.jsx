@@ -1,11 +1,13 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoredReadList, addToStoredWishList } from "../../utility/addToDB";
 
 const BookDetails = () => {
   const { bookId } = useParams();
   const id = parseInt(bookId);
   const data = useLoaderData();
   const book = data.find((book) => book.bookId === id);
+
   const {
     bookName,
     author,
@@ -19,7 +21,13 @@ const BookDetails = () => {
     tags,
   } = book;
 
-  console.log(tags);
+  const handelMarkAsRead = (id) => {
+    addToStoredReadList(id);
+  };
+
+  const handelWishList = (id) => {
+    addToStoredWishList(id)
+  }
 
   return (
     <div className="my-10">
@@ -64,8 +72,13 @@ const BookDetails = () => {
             <p className="w-3/4 font-bold">{rating}</p>
           </div>
           <div className="flex gap-5">
-          <button className="btn btn-active btn-neutral">Neutral</button>
-            <button className="btn btn-accent">Accent</button>
+            <button
+              onClick={() => handelMarkAsRead(bookId)}
+              className="btn w-24 btn-outline"
+            >
+              Read
+            </button>
+            <button onClick={()=> handelWishList(bookId)} className="btn w-24 btn-accent">Wishlist</button>
           </div>
         </div>
       </div>

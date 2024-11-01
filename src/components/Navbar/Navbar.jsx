@@ -7,7 +7,7 @@ const Navbar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <a>Listed books</a>
+        <NavLink to={"/listedBook"}>Listed books</NavLink>
       </li>
       <li>
         <a>Page to Read</a>
@@ -47,8 +47,8 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-3">
-        <a className="btn">SignUp</a>
-        <a className="btn">SignIn</a>
+        <a className="btn btn-success text-white">SignUp</a>
+        <a className="btn btn-info text-white">SignIn</a>
       </div>
     </div>
   );
